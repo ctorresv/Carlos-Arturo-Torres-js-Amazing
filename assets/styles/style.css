@@ -150,6 +150,12 @@ footer h2{
     justify-content: center;
 }
 
+.carta{
+    width: 40% !important;
+}
+
+
+
 @media only screen and (min-width: 320px) and (max-width: 767px){
     .section1{
         display: none !important;

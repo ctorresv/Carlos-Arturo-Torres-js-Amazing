@@ -20,7 +20,7 @@ function eventos(evento){
                                     <p class="card-text">${eventoRecorrido.category}</p>
                                     <div class="priceBtn">
                                         <p>Price: ${eventoRecorrido.price}</p>
-                                        <a href="./assets/pages/detail.html" class="btn btn-primary">More information</a>
+                                        <a href="./assets/pages/detail.html?id=${eventoRecorrido.name}" class="btn btn-primary">More information</a>
                                     </div>
                                 </div>
                             </div>`
