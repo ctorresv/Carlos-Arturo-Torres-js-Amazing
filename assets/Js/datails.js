@@ -2,16 +2,11 @@ const detail = document.getElementById('main-detail')
 const urlParams = location.search
 const params = new URLSearchParams (urlParams)
 const id = params.get("id")
-console.log(id)
-
 const datos = data.eventos
-
-console.log(datos[0].name == id)
 
 let targeta = datos.find(evento => evento.name == id)
 console.log(datos)
 console.log(targeta)
-
 
 function eventos(evento){
     let card = ""
@@ -29,7 +24,7 @@ function eventos(evento){
                             </thead>
                             <tbody>
                                 <tr class="">
-                                    <td scope="row">Place</td>
+                                    <td scope="row">Category</td>
                                     <td>${evento.category}</td>
                                 </tr>
                                 <tr class="">
