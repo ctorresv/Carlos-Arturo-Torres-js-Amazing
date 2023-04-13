@@ -2,14 +2,24 @@ const mainCards = document.getElementById('main-up')
 const check = document.getElementById('check-up')
 const buscardor = document.getElementById('barraBuscarU')
 /* Datos eventos */
-const evento = data.eventos
+
+let evento;
+fetch("https://mindhub-xj03.onrender.com/api/amazing")
+  .then((response) => response.json())
+  .then((datos) => {
+    evento = datos.events;
+    console.log(evento);
+    mainCards.appendChild(eventos(filtro(evento)))
+    check.innerHTML =  pintarCategorias(evento)
+  })
+  .catch((err) => console.log(err));
 
 const section = document.createElement('section')
 section.className = "d-flex justify-content-center flex-wrap secbor py-4"
 
 function filtro(eventos){
     let filtrado = []
-    for (recor of eventos){
+    for (let recor of eventos){
         let date = recor.date.split('-')
         if (date[0] == "2022"){
             filtrado.push(recor)
@@ -97,5 +107,5 @@ let busquedaTexto = buscardor.addEventListener('input', ()=>{
     marcar()
 })
 
-mainCards.appendChild(eventos(filtro(evento)))
-check.innerHTML =  pintarCategorias(evento)
+/* mainCards.appendChild(eventos(filtro(evento)))
+check.innerHTML =  pintarCategorias(evento) */

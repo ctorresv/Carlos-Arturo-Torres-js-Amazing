@@ -2,7 +2,17 @@ const mainCards = document.getElementById('main-past')
 const check = document.getElementById('check-pas')
 const buscardor = document.getElementById('barraBuscarP')
 /* Datos eventos */
-const evento = data.eventos
+
+let evento;
+fetch("https://mindhub-xj03.onrender.com/api/amazing")
+  .then((response) => response.json())
+  .then((datos) => {
+    evento = datos.events;
+    console.log(evento);
+    mainCards.appendChild(eventos(filtro(evento)))
+    check.innerHTML =  pintarCategorias(evento)
+  })
+  .catch((err) => console.log(err));
 
 const section = document.createElement('section')
 section.className = "d-flex justify-content-center flex-wrap secbor py-4"
@@ -97,5 +107,5 @@ let busquedaTexto = buscardor.addEventListener('input', ()=>{
     marcar()
 })
 
-mainCards.appendChild(eventos(filtro(evento)))
-check.innerHTML =  pintarCategorias(evento)
+/* mainCards.appendChild(eventos(filtro(evento)))
+check.innerHTML =  pintarCategorias(evento) */
