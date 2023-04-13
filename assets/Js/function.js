@@ -1,5 +1,6 @@
 export const buscardor = document.getElementById("barraBuscar");
 export const check = document.getElementById("check-box");
+console.log(check)
 export function eventos(evento) {
   const section = document.createElement("section");
   section.className = "d-flex justify-content-center flex-wrap secbor py-4";
@@ -20,6 +21,42 @@ export function eventos(evento) {
   return section;
 }
 
+export function eventosUP(evento) {
+  const section = document.createElement("section");
+  section.className = "d-flex justify-content-center flex-wrap secbor py-4";
+  section.innerHTML = "";
+  for (let eventoRecorrido of evento) {
+    section.innerHTML += `<div class="card m-2" style="width: 18rem;" data-category="${eventoRecorrido.category}">
+                                <img src="${eventoRecorrido.image}" class="card-img-top img" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">${eventoRecorrido.name}</h5>
+                                    <p class="card-text">${eventoRecorrido.category}</p>
+                                    <div class="priceBtn">
+                                        <p>Price: ${eventoRecorrido.price}</p>
+                                        <a href="./detail.html?id=${eventoRecorrido.name}" class="btn btn-primary">More information</a>
+                                    </div>
+                                </div>
+                            </div>`;
+  }
+  return section;
+}
+
+export function filtroP(eventos){
+  let filtrado = eventos.filter(evento => {
+    let date = evento.date.split('-')
+    return parseInt(date[0]) < 2023
+  })
+  return filtrado
+}
+
+export function filtroUp(eventos){
+  let filtrado = eventos.filter(evento => {
+    let date = evento.date.split('-')
+    return parseInt(date[0]) >= 2023
+  })
+  return filtrado
+}
+
 export function pintarCategorias(eventos) {
   const categories = [];
   eventos.forEach((evento) => {
@@ -28,12 +65,15 @@ export function pintarCategorias(eventos) {
     }
   });
 
+  console.log(categories)
   let fragment = document.createDocumentFragment();
   categories.forEach((category, i) => {
+    console.log(category , i)
     fragment.appendChild(templateCheckbox(i, category));
   });
+  console.log(fragment)
+  console.log(check);
   check.appendChild(fragment);
-  console.log(categories);
   asignarEventos(categories);
 }
 
@@ -93,6 +133,7 @@ export function templateCheckbox(index, category) {
   label.htmlFor = `inlineCheckbox${index}`;
   label.innerText = category;
   template.append(inputCheck, label);
+  console.log(template)
   return template;
 }
 

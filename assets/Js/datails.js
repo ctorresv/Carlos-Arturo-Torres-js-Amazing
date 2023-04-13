@@ -2,11 +2,17 @@ const detail = document.getElementById('main-detail')
 const urlParams = location.search
 const params = new URLSearchParams (urlParams)
 const id = params.get("id")
-const datos = data.eventos
 
-let targeta = datos.find(evento => evento.name == id)
-console.log(datos)
-console.log(targeta)
+let evento;
+fetch("https://mindhub-xj03.onrender.com/api/amazing")
+  .then((response) => response.json())
+  .then((datos) => {
+    evento = datos.events;
+    console.log(evento);
+    let targeta = evento.find(evento => evento.name == id)
+    detail.innerHTML = eventos(targeta)
+  })
+  .catch((err) => console.log(err));
 
 function eventos(evento){
     let card = ""
@@ -50,7 +56,7 @@ function eventos(evento){
             </div>`
     return card
 }
-detail.innerHTML = eventos(targeta)
+
 
 /* <div class="card m-2 carta" style="width: 18rem;">
             <img class="w-100 " src="../images/Concierto-de-musica1.jpg" alt="Card image cap">
